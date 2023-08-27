@@ -1,11 +1,20 @@
+import React, { useState } from 'react';
 import './App.css';
+import DrawApp from './drawApp';
+
 
 function App() {
   return (
-    <div className="App">
-      <h1>Cekilis</h1>
+    <div>
+      <DrawApp />
+
     </div>
-  );
+
+
+
+
+
+  )
 }
 
 export default App;
