@@ -1,0 +1,17 @@
+.draw-app {
+    display: flex;
+}
+
+.draw-app div {
+    margin: 50px;
+}
+
+.input-container {
+    position: relative;
+}
+
+.listAddButton {
+    position: absolute;
+    left: 50%;
+    top: 100%;
+}
