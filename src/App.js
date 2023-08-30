@@ -24,7 +24,7 @@ function App() {
       <div className="input-container">
         <textarea
           rows="10"
-          placeholder="Katılımcıları boşluklarla ayırarak girin"
+          placeholder="Katılımcıları satır atlayarak giriniz"
           value={inputValue}
           onChange={handleInputChange}
         />
@@ -33,8 +33,7 @@ function App() {
 
         <select name='tur' onChange={handleTurChange}>
           <option value={"klasik"}>Klasik Çekiliş</option>
-          <option value={"ylbası"}>Yılbaşı Çekilişi</option>
-          <option value={"eslestirme"}>Eşleştirme Çekilişi</option>
+          <option value={"yilbasi"}>Yılbaşı Çekilişi</option>
           <option value={"gruplama"}>Gruplama Çekilişi</option>
         </select> <br />
 
