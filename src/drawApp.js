@@ -6,7 +6,7 @@ function DrawApp(props) {
     const member = props.member.split("\n").filter(item => item !== null && item !== undefined && item !== "");;
     const groupSize = props.groupSize;
     const numberOfWinner = props.numberOfWinner;
-    let winner = '';
+    let winner = [];
 
     if (type === "classic") {
         function shuffleArray(array) {
@@ -18,10 +18,8 @@ function DrawApp(props) {
         shuffleArray(member);
 
         for (let i = 0; i < numberOfWinner; i++) {
-            winner += ` ${member[i]} - `
+            winner.push(member[i])
         }
-
-
 
 
     }
@@ -50,8 +48,8 @@ function DrawApp(props) {
             sameOrder = compareArrays(member, member2);
         }
         for (let i = 0; i < member.length; i++)
-            winner += `${member[i]}, ${member2[i]}'a alacak\n - `;
-        console.log(winner);
+            winner.push(`${member[i]} => ${member2[i]} \n`);
+
     }
 
     else if (type === "grouping") {
@@ -68,13 +66,13 @@ function DrawApp(props) {
 
             const gruplar = []
             for (let i = 0; i < groupSize; i++) {
-                gruplar.push(`${member[0]}`);
+                gruplar.push(` ${member[0]}`);
                 member.shift();
 
             }
-            console.log(grup, gruplar);
-            grup.push(`${gruplar}  -  `);
 
+            grup.push(`${gruplar} `);
+            console.log(grup)
         }
         winner = grup
 
@@ -93,14 +91,24 @@ function DrawApp(props) {
         }
         shuffleArray(member)
         for (let i = 0; i < member.length; i += 1) {
-            const onepair = `${member[i]} - ${member2[i]}, \n `;
+            const onepair = `${member[i]} - ${member2[i]} \n `;
             pairs.push(onepair);
         }
         winner = pairs
     }
 
+
+
     return (
-        <div>{winner}</ div>
+
+        <div>
+            {winner.map((item, index) => (
+                <span key={index}>
+                    {index + 1}. {item}
+                    {index < winner.length - 1 && <br />}
+                </span>
+            ))}
+        </div>
     )
 
 }
