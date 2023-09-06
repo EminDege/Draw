@@ -1,17 +1,108 @@
-.draw-app {
+body {
+    background-color: #223843;
+    color: #EFF1F3;
+    font-family: 'Amatic SC', sans-serif;
+    /* font-family: 'Poppins', sans-serif; */
+    font-size: 24px;
+}
+
+.drawApp {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+h1 {
+    font-size: 48px;
+}
+
+.drawType {
+    margin: 10px auto;
+    text-align: center;
     display: flex;
 }
 
-.draw-app div {
-    margin: 50px;
+select {
+    background-color: #EFF1F3;
+    font-family: 'Poppins', sans-serif;
+    height: 40px;
+    margin: auto 5px;
+    text-align: center;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px rgba(245, 243, 243, 0.2);
 }
 
-.input-container {
-    position: relative;
+.inputContainer {
+    margin: 0 auto;
+    display: flex;
 }
 
-.listAddButton {
-    position: absolute;
-    left: 50%;
-    top: 100%;
+textarea {
+    margin: 10px;
+    width: 170px;
+    border: none;
+    border-radius: 10px;
+    background-color: #EFF1F3;
+    font-family: 'Poppins', sans-serif;
+}
+
+.optionPlusButton {
+    margin: 0 auto;
+    display: flex;
+    height: 160px;
+}
+
+.options {
+    width: 250px;
+}
+
+.option {
+    display: flex;
+    justify-content: center;
+}
+
+input {
+    width: 40px;
+    display: flex;
+    background-color: #EFF1F3;
+    margin: auto 3px;
+    height: 40px;
+    text-align: center;
+    border: none;
+    border-radius: 13px;
+}
+
+.drawButton {
+    width: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    background-color: #D77A61;
+    font-size: 24px;
+    font-family: 'Amatic SC', sans-serif;
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+
+button:hover {
+    background-color: #D8B4A0;
+    box-shadow: 5px 5px 10px rgba(26, 25, 25, 0.2);
+    font-size: 30px;
+
+}
+
+h2 {
+    color: #D77A61;
+}
+
+h3 {
+    margin-bottom: 0px;
 }

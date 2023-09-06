@@ -1,18 +1,32 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 
 function DrawApp(props) {
-    const tur = props.tur;
-    const uye = props.uye.split("\n");
-
+    const type = props.type;
+    const member = props.member.split("\n").filter(item => item !== null && item !== undefined && item !== "");;
+    const groupSize = props.groupSize;
+    const numberOfWinner = props.numberOfWinner;
     let winner = '';
 
-    if (tur === "klasik") {
-        const index = Math.floor(Math.random() * (uye.length))
-        winner = uye[index];
+    if (type === "classic") {
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+        shuffleArray(member);
+
+        for (let i = 0; i < numberOfWinner; i++) {
+            winner += ` ${member[i]} - `
+        }
+
+
+
+
     }
-    else if (tur === "yilbasi") {
-        const uye2 = uye.slice()
+    else if (type === "christmas") {
+        const member2 = member.slice()
         function shuffleArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
@@ -23,80 +37,71 @@ function DrawApp(props) {
         function compareArrays(arr1, arr2) {
             for (let i = 0; i < arr1.length; i++) {
                 if (arr1[i] === arr2[i]) {
-                    return true; // Elemanlar eşleşiyor
+                    return true;
                 }
             }
-            return false; // Elemanlar eşleşmiyor
+            return false;
         }
 
         let sameOrder = true;
 
         while (sameOrder) {
-            shuffleArray(uye2);
-            sameOrder = compareArrays(uye, uye2);
+            shuffleArray(member2);
+            sameOrder = compareArrays(member, member2);
         }
-        for (let i = 0; i < uye.length; i++)
-            winner += `${uye[i]}, ${uye2[i]}'a alacak\n`;
+        for (let i = 0; i < member.length; i++)
+            winner += `${member[i]}, ${member2[i]}'a alacak\n - `;
         console.log(winner);
     }
 
-    else if (tur === "gruplama") {
-
+    else if (type === "grouping") {
         function shuffleArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [array[i], array[j]] = [array[j], array[i]];
             }
         }
+        shuffleArray(member);
 
-        function splitListIntoPairs(array) {
-            shuffleArray(array);
-            const pairs = [];
-            for (let i = 0; i < array.length; i += 2) {
-                pairs.push([array[i], array[i + 1]]);
+        const grup = [];
+        while (groupSize <= member.length) {
+
+            const gruplar = []
+            for (let i = 0; i < groupSize; i++) {
+                gruplar.push(`${member[0]}`);
+                member.shift();
+
             }
-            return pairs;
-        }
-
-        const winners = splitListIntoPairs(uye);
-
-        for (let i = 0; i < winners.length; i++) {
-            const pair = winners[i];
-            winner += `${pair.join(" - ")} `;
+            console.log(grup, gruplar);
+            grup.push(`${gruplar}  -  `);
 
         }
+        winner = grup
+
+
 
 
     }
+    else if (type === "pairing") {
+        const member2 = props.member2.split("\n");
+        const pairs = []
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+        shuffleArray(member)
+        for (let i = 0; i < member.length; i += 1) {
+            const onepair = `${member[i]} - ${member2[i]}, \n `;
+            pairs.push(onepair);
+        }
+        winner = pairs
+    }
+
     return (
         <div>{winner}</ div>
     )
 
 }
 export default DrawApp
-
-
-
-
-
-// const verenler = [];
-// const alanlar = [];
-// const uye2 = uye.slice();
-
-// while (uye.length > 0 && uye2.length > 0) {
-//     const randomIndex = Math.floor(Math.random() * uye.length);
-//     const randomIndex2 = Math.floor(Math.random() * uye2.length);
-
-//     if (uye[randomIndex] !== uye2[randomIndex2]) {
-//         const veren = uye.splice(randomIndex, 1)[0];
-//         const alan = uye2.splice(randomIndex2, 1)[0];
-//         verenler.push(veren);
-//         alanlar.push(alan);
-//     }
-//     else continue;
-// }
-
-// for (let i = 0; i < verenler.length; i++) {
-//     winner += `${verenler[i]}, ${alanlar[i]} 'a alıyor\n`;
-// }
-
