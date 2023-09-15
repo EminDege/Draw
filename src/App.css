@@ -2,7 +2,6 @@ body {
     background-color: #223843;
     color: #EFF1F3;
     font-family: 'Amatic SC', sans-serif;
-    /* font-family: 'Poppins', sans-serif; */
     font-size: 24px;
 }
 
@@ -31,12 +30,16 @@ select {
     text-align: center;
     border: none;
     border-radius: 15px;
+}
+
+.drawType select {
     box-shadow: 5px 5px 10px rgba(245, 243, 243, 0.2);
 }
 
 .inputContainer {
     margin: 0 auto;
     display: flex;
+    height: 230px;
 }
 
 textarea {
@@ -48,24 +51,47 @@ textarea {
     font-family: 'Poppins', sans-serif;
 }
 
+textarea:focus {
+    border: 2px solid #D77A61;
+    outline: #D77A61;
+}
+
+textarea::placeholder {
+    text-align: center;
+}
+
 .optionPlusButton {
-    margin: 0 auto;
     display: flex;
-    height: 160px;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+}
+
+.optionPlusButton select {
+    width: 80px;
+}
+
+.result {
+    width: 300px;
 }
 
 .options {
-    width: 250px;
+    width: 300px;
 }
 
 .option {
     display: flex;
     justify-content: center;
+    align-items: center;
+    height: 70px;
+}
+
+.match {
+    margin-left: 45px;
 }
 
 input {
     width: 40px;
-    display: flex;
     background-color: #EFF1F3;
     margin: auto 3px;
     height: 40px;
@@ -74,12 +100,11 @@ input {
     border-radius: 13px;
     font-size: 20px;
     padding-left: 5px;
-
-
 }
 
 .drawButton {
     width: 250px;
+    height: 170px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -101,7 +126,6 @@ button:hover {
     background-color: #D8B4A0;
     box-shadow: 5px 5px 10px rgba(26, 25, 25, 0.2);
     font-size: 30px;
-
 }
 
 h2 {
